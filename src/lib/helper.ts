@@ -7,14 +7,15 @@ export const handleCatchError = (error: any) => {
                 status: 400,
                 message: error.response?.data?.message,
                 error: error.response?.data?.error,
+                data: {}
             }
         }
 
     }
-
     return {
         status: 400,
         message: "Error while creating account.",
-        error: {}
+        error: {},
+        data: {}
     }
 }
