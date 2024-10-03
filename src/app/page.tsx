@@ -5,6 +5,7 @@ import authOptions from "./api/auth/[...nextauth]/options";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
+  const user = session;
   return (
     <main>
       <div className="flex justify-between items-center p-6">
@@ -21,7 +22,8 @@ export default async function Home() {
         </div>
       </div>
 
-      <div>{JSON.stringify(session)}</div>
+      {/* @ts-ignore */}
+      <p>{JSON.stringify(user?.user?.token)}</p>
     </main>
   );
 }
