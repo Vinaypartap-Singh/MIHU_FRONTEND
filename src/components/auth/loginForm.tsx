@@ -30,22 +30,14 @@ export default function LoginForm() {
     if (state.status === 400) {
       toast.error(state.message);
     } else if (state.status === 200) {
-      console.log(state);
       toast.success(state.message);
-      localStorage.setItem("auth-error", JSON.stringify(state));
-      localStorage.setItem("data", JSON.stringify(state.data));
 
       // Sign in with NextAuth
       signIn("credentials", {
         email: state.data.email,
         password: state.data.password,
-        redirect: false,
-      }).then((result) => {
-        if (result?.error) {
-          toast.error(result.error); // Handle sign-in error
-        } else {
-          router.push("/"); // Redirect on successful sign-in
-        }
+        redirect: true,
+        callbackUrl: "/dashboard",
       });
     }
   }, [state, router]);

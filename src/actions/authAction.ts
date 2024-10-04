@@ -2,7 +2,6 @@
 
 import {
     CHECK_CREDENTIALS_URL,
-    LOGIN_URL,
     REGISTER_URL,
     VERIFY_OTP_URL,
 } from "@/lib/apiEndPoints";
@@ -26,7 +25,7 @@ export async function registerAction(prevState: any, formdata: FormData) {
             data: {},
         };
     } catch (error) {
-        return handleCatchError(error);
+        return handleCatchError(error, "while creating account");
     }
 }
 
@@ -44,7 +43,7 @@ export async function verifyOTP(prevState: any, formdata: FormData) {
             data: {}, // Make sure data is always present
         };
     } catch (error) {
-        return handleCatchError(error);
+        return handleCatchError(error, 'while verifying otp');
     }
 }
 
@@ -78,7 +77,7 @@ export async function loginAction(prevState: any, formdata: FormData) {
         }
         return {
             status: 400,
-            message: "Error while creating account.",
+            message: "An server side error while Log in your account.",
             error: {},
             data: {}
         }

@@ -1,6 +1,6 @@
 import { AxiosError } from "axios"
 
-export const handleCatchError = (error: any) => {
+export const handleCatchError = (error: any, message: string) => {
     if (error instanceof AxiosError) {
         if (error.response?.status === 400) {
             return {
@@ -14,7 +14,7 @@ export const handleCatchError = (error: any) => {
     }
     return {
         status: 400,
-        message: "Error while creating account.",
+        message: `An server side error occured ${message}`,
         error: {},
         data: {}
     }
