@@ -14,7 +14,7 @@ export const handleCatchError = (error: any, message: string) => {
     }
     return {
         status: 400,
-        message: `An server side error occured ${message}`,
+        message: `An server side error occured ${message} ${error}`,
         error: {},
         data: {}
     }

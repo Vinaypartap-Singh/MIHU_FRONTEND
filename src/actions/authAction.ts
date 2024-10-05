@@ -2,6 +2,8 @@
 
 import {
     CHECK_CREDENTIALS_URL,
+    PASSWORD_RESET_CHANGE,
+    PASSWORD_RESET_REQUEST,
     REGISTER_URL,
     VERIFY_OTP_URL,
 } from "@/lib/apiEndPoints";
@@ -81,5 +83,47 @@ export async function loginAction(prevState: any, formdata: FormData) {
             error: {},
             data: {}
         }
+    }
+}
+
+export async function requestResetPasswordAction(prevState: any, formdata: FormData) {
+    try {
+        const { data } = await axios.post(PASSWORD_RESET_REQUEST, {
+            email: formdata.get("email"),
+        });
+
+        return {
+            status: 200,
+            message: data?.message ?? "Password Reset OTP sent on your email",
+            error: {},
+            data: {
+                email: formdata.get("email")
+            }, // Make sure data is always present
+        };
+    } catch (error) {
+        return handleCatchError(error, 'while verifying otp');
+    }
+}
+
+
+export async function resetPasswordOtpVerifyAction(prevState: any, formdata: FormData) {
+    try {
+        const { data } = await axios.post(PASSWORD_RESET_CHANGE, {
+            email: formdata.get("email"),
+            otp: Number(formdata.get("otp")),
+            password: formdata.get("password"),
+            confirmPassword: formdata.get("confirmPassword")
+        });
+
+        return {
+            status: 200,
+            message: data?.message ?? "Password Otp Verified",
+            error: {},
+            data: {
+                email: formdata.get("email")
+            }, // Make sure data is always present
+        };
+    } catch (error) {
+        return handleCatchError(error, 'while verifying otp');
     }
 }

@@ -17,6 +17,7 @@ export default function VerifyOtpForm() {
     status: 0,
     message: "",
     error: {},
+    data: {},
   };
 
   const [state, formAction] = useFormState(verifyOTP, initState);
@@ -27,7 +28,7 @@ export default function VerifyOtpForm() {
     } else if (state.status === 200) {
       toast.success(state.message);
       localStorage.removeItem("email");
-      router.replace("/");
+      router.replace("/login");
     }
     console.log(state);
   }, [state]);

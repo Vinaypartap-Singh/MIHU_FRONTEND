@@ -12,17 +12,14 @@ import { loginAction } from "@/actions/authAction";
 import { signIn } from "next-auth/react";
 import { useFormState } from "react-dom";
 
+export const initState = {
+  status: 0,
+  message: "",
+  error: {},
+  data: {},
+};
+
 export default function LoginForm() {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-
-  const initState = {
-    status: 0,
-    message: "",
-    error: {},
-    data: {},
-  };
-
   const [state, formAction] = useFormState(loginAction, initState);
   const router = useRouter();
 
@@ -42,8 +39,6 @@ export default function LoginForm() {
     }
   }, [state, router]);
 
-  console.log(state);
-
   return (
     <form className="space-y-6" action={formAction}>
       <div className="space-y-2">
@@ -53,8 +48,6 @@ export default function LoginForm() {
           name="email"
           type="email"
           id="email"
-          value={email} // Control input value
-          onChange={(e) => setEmail(e.target.value)} // Update state on change
           className="py-6"
         />
         <span className="text-red-500 capitalize">{state.error?.email}</span>
@@ -67,8 +60,6 @@ export default function LoginForm() {
           type="password"
           name="password"
           id="password"
-          value={password} // Control input value
-          onChange={(e) => setPassword(e.target.value)} // Update state on change
           className="py-6"
         />
         <span className="text-red-500 capitalize">{state.error?.password}</span>

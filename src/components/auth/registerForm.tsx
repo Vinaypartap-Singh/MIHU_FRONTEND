@@ -18,6 +18,7 @@ export default function RegisterForm() {
     status: 0,
     message: "",
     error: {},
+    data: {},
   };
 
   const [state, formAction] = useFormState(registerAction, initState);
