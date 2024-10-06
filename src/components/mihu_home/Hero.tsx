@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="mx-auto flex px-5 py-64 items-center justify-center flex-col">
+    <section className="mx-auto flex px-5 items-center justify-center flex-col">
       <div className="text-center lg:w-2/3 w-full space-y-6 container">
         <div>
           <Image
@@ -17,7 +17,7 @@ export default function HeroSection() {
           />
         </div>
         <h1 className="sm:text-6xl text-3xl mb-4 leading-loose font-medium">
-          Build Your <span className="text-sky-500">Website Efforlessly </span>
+          Build Your <span className="text-sky-500">Website Effortlessly </span>
           with Mihu
         </h1>
         <p>

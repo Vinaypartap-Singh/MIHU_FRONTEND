@@ -41,6 +41,7 @@ export default function ForgotPasswordRequestForm() {
           className="py-6"
           onChange={(e) => setEmail(e.target.value)}
         />
+        <span className="text-red-500 capitalize">{state.error?.email}</span>
       </div>
 
       <div className="flex justify-end">

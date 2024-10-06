@@ -42,7 +42,7 @@ export default function ForgotPasswordUpdateForm() {
           readOnly
           value={"developervsandhu@gmail.com"}
         />
-        <span>{state.error?.email}</span>
+        <span className="text-red-500 capitalize">{state.error?.email}</span>
       </div>
       <div className="space-y-2">
         <div className="flex justify-between items-center">
@@ -59,6 +59,7 @@ export default function ForgotPasswordUpdateForm() {
           id="otp"
           className="py-6"
         />
+        <span className="text-red-500 capitalize">{state.error?.otp}</span>
       </div>
 
       <div className="space-y-2">
@@ -70,6 +71,7 @@ export default function ForgotPasswordUpdateForm() {
           id="password"
           className="py-6"
         />
+        <span className="text-red-500 capitalize">{state.error?.password}</span>
       </div>
 
       <div className="space-y-2">
@@ -81,6 +83,9 @@ export default function ForgotPasswordUpdateForm() {
           id="confirmPassword"
           className="py-6"
         />
+        <span className="text-red-500 capitalize">
+          {state.error?.confirmPassword}
+        </span>
       </div>
       <div className="flex justify-end">
         <SubmitButton />
