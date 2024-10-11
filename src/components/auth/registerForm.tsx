@@ -89,8 +89,8 @@ export default function RegisterForm() {
         <SubmitButton />
       </div>
 
-      <div className="flex justify-between">
-        <p>Already have an account?</p>
+      <div className="flex justify-between items-center">
+        <p className="text-sm">Already have an account?</p>
         <Button variant={"link"} asChild>
           <Link href={"/login"} className="text-end font-bold">
             Login Now

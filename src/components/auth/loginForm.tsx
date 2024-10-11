@@ -67,7 +67,10 @@ export default function LoginForm() {
 
       <div className="flex justify-end">
         <Button variant={"link"} asChild>
-          <Link href={"/forgot-password"} className="text-end font-bold">
+          <Link
+            href={"/forgot-password-request"}
+            className="text-end font-bold"
+          >
             Forgot Password?
           </Link>
         </Button>
@@ -77,8 +80,8 @@ export default function LoginForm() {
         <SubmitButton />
       </div>
 
-      <div className="flex justify-between">
-        <p>Don't have an account?</p>
+      <div className="flex justify-between items-center">
+        <p className="text-sm">Don't have an account?</p>
         <Button variant={"link"} asChild>
           <Link href={"/register"} className="text-end font-bold">
             Register Now

@@ -77,10 +77,10 @@ export default function AboutSection() {
                       {data.icon}
                     </div>
                     <div className="flex-grow flex flex-col justify-between">
-                      <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
+                      <h2 className="text-gray-900 dark:text-white text-lg title-font font-medium mb-3">
                         {data.title}
                       </h2>
-                      <p className="leading-relaxed text-sm">
+                      <p className="leading-relaxed text-sm dark:text-white">
                         {data.description}
                       </p>
                       <Link
