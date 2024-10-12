@@ -22,6 +22,7 @@ export default function RegisterForm() {
   };
 
   const [state, formAction] = useFormState(registerAction, initState);
+  console.log(state.status);
 
   useEffect(() => {
     if (state.status === 400) {

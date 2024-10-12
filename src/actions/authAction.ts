@@ -12,12 +12,15 @@ import axios, { AxiosError } from "axios";
 
 export async function registerAction(prevState: any, formdata: FormData) {
     try {
+        console.log(REGISTER_URL)
         const { data } = await axios.post(REGISTER_URL, {
             name: formdata.get("name"),
             email: formdata.get("email"),
             password: formdata.get("password"),
             confirmPassword: formdata.get("confirmPassword"),
         });
+
+        console.log(data)
 
         return {
             status: 200,
@@ -27,7 +30,23 @@ export async function registerAction(prevState: any, formdata: FormData) {
             data: {},
         };
     } catch (error) {
-        return handleCatchError(error, "while creating account");
+        if (error instanceof AxiosError) {
+            if (error.response?.status === 400) {
+                return {
+                    status: 400,
+                    message: error.response?.data?.message,
+                    error: error.response?.data?.error,
+                    data: {}
+                }
+            }
+
+        }
+        return {
+            status: 400,
+            message: `An server side error occured ${error}`,
+            error: {},
+            data: {}
+        }
     }
 }
 
