@@ -1,5 +1,4 @@
 import ForgotPasswordRequestForm from "@/components/auth/forgotPassword";
-import ForgotPasswordOtpForm from "@/components/auth/forgotPasswordUpdate";
 
 export default function ForgotPasswordOtp() {
   return (

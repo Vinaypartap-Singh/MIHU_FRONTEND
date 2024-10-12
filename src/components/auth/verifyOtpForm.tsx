@@ -5,13 +5,14 @@ import SubmitButton from "../common/SubmitButton";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { verifyOTP } from "@/actions/authAction";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
 export default function VerifyOtpForm() {
+  const [email, setEmail] = useState<string>("");
   const router = useRouter();
   const initState = {
     status: 0,
@@ -23,11 +24,12 @@ export default function VerifyOtpForm() {
   const [state, formAction] = useFormState(verifyOTP, initState);
 
   useEffect(() => {
+    setEmail(localStorage.getItem("email") as string);
     if (state.status === 400) {
       toast.error(state.message);
     } else if (state.status === 200) {
       toast.success(state.message);
-      localStorage.removeItem("email");
+      localStorage?.removeItem("email");
       router.replace("/login");
     }
     console.log(state);
@@ -42,7 +44,7 @@ export default function VerifyOtpForm() {
           name="email"
           id="email"
           className="py-6"
-          value={localStorage.getItem("email")!}
+          value={email}
           readOnly
         />
         {/* <span className="text-red-500">{state?.error?.name}</span> */}

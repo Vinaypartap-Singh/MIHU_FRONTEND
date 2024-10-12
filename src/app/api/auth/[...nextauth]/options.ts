@@ -43,7 +43,7 @@ export const authOptions: AuthOptions = {
         email: { label: "Email", type: "text", placeholder: "email@example.com" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         try {
           // Attempt to authenticate user
           const { data } = await axios.post(LOGIN_URL, credentials);

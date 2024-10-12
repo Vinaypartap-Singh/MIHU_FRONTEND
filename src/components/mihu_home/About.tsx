@@ -6,15 +6,14 @@ import {
   SearchCheck,
   ShieldCheck,
 } from "lucide-react";
-import { Button } from "../ui/button";
 import React from "react";
 import Link from "next/link";
 
 interface abooutInfo {
   icon: React.ReactNode;
-  title: String;
-  description: String;
-  btnURL: String;
+  title: string;
+  description: string;
+  btnURL: string;
 }
 
 export default function AboutSection() {

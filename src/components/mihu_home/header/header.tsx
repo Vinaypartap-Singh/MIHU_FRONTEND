@@ -6,8 +6,8 @@ import { getServerSession } from "next-auth";
 import Link from "next/link";
 
 export interface navItemsType {
-  name: String;
-  url: String;
+  name: string;
+  url: string;
 }
 
 export default async function Header() {
